@@ -97,7 +97,7 @@
                 </div>
                 <div class="form-group">
                     <label for="discount">Discount * (%)</label> 
-                    <input id="discount" name="discount" type="text" class="form-control" value="{{ $income->discount }}" required="required" aria-describedby="discountHelpBlock"> 
+                    <input id="discount" name="discount" type="text" class="form-control" value="{{ $income->discount * 100 }}" required="required" aria-describedby="discountHelpBlock"> 
                     @error('discount')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
