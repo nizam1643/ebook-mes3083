@@ -173,7 +173,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <footer class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-      v3.1.7
+      v3.1.8
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2014-2021 <a href="">{{ env('APP_NAME') }}</a>.</strong> All rights reserved.
