@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="{{ asset('dash-template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('dash-template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 
-  <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
 @endsection
 
 @section('script')
@@ -23,6 +22,11 @@
 <script src="{{ asset('dash-template/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('dash-template/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('dash-template/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+
+<script src="{{ asset('ckeditor/assets/js/editor/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('ckeditor/assets/js/editor/ckeditor/adapters/jquery.js') }}"></script>
+<script src="{{ asset('ckeditor/assets/js/editor/ckeditor/styles.js') }}"></script>
+<script src="{{ asset('ckeditor/assets/js/editor/ckeditor/ckeditor.custom.js') }}"></script>
 
 <!-- Page specific script -->
 <script type="text/javascript">
