@@ -23,6 +23,17 @@ class AdminController extends Controller
 
         $labelPayment = AuthorPayment::pluck('status')->toArray();
         $dataPayment = AuthorPayment::selectRaw('count(*) as total, status')->groupBy('status')->pluck('total')->toArray();
-        return view('admin.dashboard', compact('totalAuthors', 'totalPackage', 'totalPurchase', 'labelIncome', 'dataIncome', 'labelPayment', 'dataPayment'));
+
+        $totalProfit = AuthorPackage::get()->sum(function ($package) {
+            return $package->price - $package->payments->sum('amount');
+        });
+
+        $packages = AuthorPackage::get();
+
+        $totalprofitperpackages = $packages->map(function ($package) {
+            $package->totalProfit = $package->price - $package->payments->sum('amount');
+            return $package->totalProfit;
+        });
+        return view('admin.dashboard', compact('totalAuthors', 'totalPackage', 'totalPurchase', 'labelIncome', 'dataIncome', 'labelPayment', 'dataPayment', 'totalProfit', 'packages', 'totalprofitperpackages'));
     }
 }

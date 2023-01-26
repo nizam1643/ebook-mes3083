@@ -190,6 +190,21 @@
           <!-- /.info-box -->
         </div>
         <!-- /.col -->
+        <!-- /.col -->
+        <div class="col-md-4 col-sm-4 col-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-success"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">TOTAL GROSS PROFIT</span>
+              <span class="info-box-number">RM {{ $totalProfit ?? 0 }}</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
     </div>
 </div>
 
@@ -213,6 +228,34 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="col-lg-12">
+  <h5 class="mb-2">Gross Profit Status</h5>
+  <div class="card">
+      <div class="card-body">
+        <div class="table-responsive">
+          <table id="" class="table table-bordered table-striped">
+              <thead>
+                <tr class="text-center">
+                  <th>Package</th>
+                  <th>Total Profit</th>
+                </tr>
+              </thead>
+              <tbody>
+                 @forelse ($packages as $package)
+                  <tr class="text-center">
+                      <td>{{ $package->name }}</td>
+                      <td>RM {{ $totalprofitperpackages[$loop->index] ?? 0 }}</td>
+                  </tr>
+                 @empty
+                     
+                 @endforelse
+              </tbody>
+          </table>
+      </div>
+      </div>
+  </div>
 </div>
 <!-- /.col-md-6 -->
 @endsection
