@@ -5,6 +5,8 @@
   <link rel="stylesheet" href="{{ asset('dash-template/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('dash-template/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('dash-template/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+
+  <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
 @endsection
 
 @section('script')
@@ -23,6 +25,12 @@
 <script src="{{ asset('dash-template/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
 <!-- Page specific script -->
+<script type="text/javascript">
+  CKEDITOR.replace('content', {
+      filebrowserUploadUrl: "{{route('author.book.importImage', ['_token' => csrf_token() ])}}",
+      filebrowserUploadMethod: 'form'
+  });
+</script>
 <script>
     $(function () {
       $("#example1").DataTable({
