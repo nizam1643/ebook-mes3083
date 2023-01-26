@@ -134,6 +134,7 @@ class AuthorBookController extends Controller
             $pdf->setOption('javascript-delay', 5000);
             $pdf->setOption('enable-smart-shrinking', true);
             $pdf->setOption('no-stop-slow-scripts', true);
+            $pdf->setTimeout(3600);
     
             $path = public_path('files/'.auth()->user()->id.'/');
             $pdf_name = Str::random(5).'.pdf';
@@ -151,7 +152,7 @@ class AuthorBookController extends Controller
 
             $book = AuthorBookDraft::where(['id' => $id, 'user_id' => auth()->user()->id])->first();
 
-            $cloudconvert = new CloudConvert(['api_key' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZTM3ZTI3OWI3MWFiYmRlMzgyZmVlODhjMGUwZmFhYjFhZTIxYWEyNWM3MGUxNTM2NzdkZDc5OTYxOTcxZTIwM2NkZGM3MWYyMzcxNjkzYWEiLCJpYXQiOjE2NzQ2Mjk1ODUuNjY3Mjk5LCJuYmYiOjE2NzQ2Mjk1ODUuNjY3MywiZXhwIjo0ODMwMzAzMTg1LjY2MTUwNiwic3ViIjoiNjE3NDI1NjAiLCJzY29wZXMiOlsidXNlci5yZWFkIiwidXNlci53cml0ZSIsInRhc2sucmVhZCIsInRhc2sud3JpdGUiLCJ3ZWJob29rLnJlYWQiLCJ3ZWJob29rLndyaXRlIiwicHJlc2V0LnJlYWQiLCJwcmVzZXQud3JpdGUiXX0.R8kv6kJepJxe8VFWtrgdCpAAKkvkiyodm9CQDOwDA4vWMCUcnoWTNpnV1JHPu6HtQzYYB0Q9hvNB4Cplo3gMkec4jEbff90W7R0wIKG8le0S5eTyXFkkrT3xVuxdEeku0Qn1Yc9J1AUx0ltSRw-Y_ABnJYbfaABj3W7nddnE_OZbcXIj9cMIGqyOe3msDhd2kc5TYSWFmbaBe-3UuqgDN5Az0UNktzcP3seGYvTH81sYq-Awj7D-Y7I2F4XbUouRPpdIENvhMKZjc77q-7wlCKgvYO4tDypSVUX_Cs2qJ5N95QAR6HD_3sTu1hISmFziL8FxEcALG8mzFvSOaVZ6apHQnqIgNbChp-pmH58f0cJoWKFgKlvviW4x1gvVRoHY0-l6fqGxRy4NHJEcS-_97jDuP9j4taubV7IfLJXJyT513uUibbIXlLesNWd1fl0YifozDN4ABjT_-DEHVz7w3WQYwndf5y4TNX6D5hnLKatH_D7scMdFJYFb3xmVIWnEpmwyfIptVjEuWCI3c4h-TBUibwlR_ODog_wZHG56S6NwwiCIyjAVNePzDK3pFOZ21F7-xHk_JcT2k-pyz4q4ghk_ckAvoCcFUw5r2O61NXJrj1tLjsfcc8_8psfdAqAJx9-eIxPQNa7G1ozAGHt_gUYv3GDRP2w4nwrgqQkU-84']);
+            $cloudconvert = new CloudConvert(['api_key' => env('CLOUDCONVERT_API_KEY')]);
             
             $link = env('APP_URL').'/'.$book->url_book;
 
