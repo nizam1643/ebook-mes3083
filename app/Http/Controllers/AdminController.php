@@ -21,7 +21,11 @@ class AdminController extends Controller
         $labelIncome = HouseholdIncome::pluck('name')->toArray();
         $dataIncome = AuthorProfile::selectRaw('count(*) as total, income_id')->groupBy('income_id')->pluck('total')->toArray();
 
-        $labelPayment = AuthorPayment::pluck('status')->toArray();
+        $labelPayment = [
+            'Pending',
+            'Success',
+            'Failed',
+        ];
         $dataPayment = AuthorPayment::selectRaw('count(*) as total, status')->groupBy('status')->pluck('total')->toArray();
 
         $totalProfit = AuthorPackage::get()->sum(function ($package) {
